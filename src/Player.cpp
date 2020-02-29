@@ -21,23 +21,18 @@ void Player::callInput()
     switch (userInput)
     {
         case 'w':
-            this->y += 1;
-            cout << "Player moves up" << endl;
+            this->y -= 1;
             break;
         case 's':
-            this->y -= 1;
-            cout << "Player moves down" << endl;
+            this->y += 1;
             break;
         case 'd':
             this->x += 1;
-            cout << "Player moves right" << endl;
             break;
         case 'a':
             this->x -= 1;
-            cout << "Player moves left" << endl;
             break;
     }
-    cout << "Player is in coords (" << this->x << ", " << this->y << ")" << endl;
 }
 
 int Player::getX()
