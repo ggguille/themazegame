@@ -13,7 +13,7 @@ void GameMap::draw()
     {
         for (int j = 0; j < 10; j++)
         {
-            cout << 0;
+            cout << cells[i][j].id;
         }
         cout << endl;
     }
