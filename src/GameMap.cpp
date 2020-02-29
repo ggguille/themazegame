@@ -25,7 +25,7 @@ void GameMap::setPlayerCell(int playerX, int playerY)
     {
         this->playerCell->id = 0;
     }
-    this->playerCell = &(this->cells[playerX][playerY]);
+    this->playerCell = &(this->cells[playerY][playerX]);
     this->playerCell->id = 3;
     //cout << "Player coords (" << playerX << ", " << playerY << ")" << endl;
 }
