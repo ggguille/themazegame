@@ -6,8 +6,9 @@ class Player
     public:
         Player();
         //virtual ~Player();
-        void CallInput();
+        void callInput();
     protected:
+        int x, y;
     private:
 };
 
