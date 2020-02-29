@@ -5,12 +5,12 @@
 
 class GameMap
 {
-private:
-    /* data */
 public:
+    GameMap();
+    MapCell* playerCell;
     MapCell cells[15][10];
-    GameMap(/* args */);
     void draw();
+    void setPlayerCell(int playerX, int playerY);
 };
 
 

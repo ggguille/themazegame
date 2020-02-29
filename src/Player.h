@@ -7,6 +7,8 @@ class Player
         Player();
         //virtual ~Player();
         void callInput();
+        int getX();
+        int getY();
     protected:
         int x, y;
     private:

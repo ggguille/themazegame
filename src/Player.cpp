@@ -39,3 +39,13 @@ void Player::callInput()
     }
     cout << "Player is in coords (" << this->x << ", " << this->y << ")" << endl;
 }
+
+int Player::getX()
+{
+    return this->x;
+}
+
+int Player::getY()
+{
+    return this->y;
+}

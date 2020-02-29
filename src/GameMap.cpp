@@ -4,7 +4,7 @@ using namespace std;
 
 GameMap::GameMap(/* args */)
 {
-    
+    this->playerCell = NULL;
 }
 
 void GameMap::draw()
@@ -17,4 +17,15 @@ void GameMap::draw()
         }
         cout << endl;
     }
+}
+
+void GameMap::setPlayerCell(int playerX, int playerY)
+{
+    if (this->playerCell != NULL) 
+    {
+        this->playerCell->id = 0;
+    }
+    this->playerCell = &(this->cells[playerX][playerY]);
+    this->playerCell->id = 3;
+    //cout << "Player coords (" << playerX << ", " << playerY << ")" << endl;
 }

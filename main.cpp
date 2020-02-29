@@ -15,6 +15,7 @@ int main(int argc, char const *argv[])
     while (!isGameOver)
     {
         hero.callInput();
+        map.setPlayerCell(hero.getX(), hero.getY());
         map.draw();
     }
     return 0;
