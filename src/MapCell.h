@@ -8,6 +8,7 @@ private:
 public:
     char id;
     MapCell(/* args */);
+    bool isBlocked();
 };
 
 

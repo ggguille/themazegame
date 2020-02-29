@@ -14,9 +14,12 @@ int main(int argc, char const *argv[])
     cout << "Game started" << endl;
     while (!isGameOver)
     {
-        hero.callInput();
-        map.setPlayerCell(hero.getX(), hero.getY());
+        if (!map.setPlayerCell(hero.getX(), hero.getY())) 
+        {
+            hero.resetToSafePosition();
+        }
         map.draw();
+        hero.callInput();
     }
     return 0;
 }

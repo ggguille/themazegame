@@ -7,10 +7,11 @@ class Player
         Player();
         //virtual ~Player();
         void callInput();
+        void resetToSafePosition();
         int getX();
         int getY();
     protected:
-        int x, y;
+        int x, lastX, y, lastY;
     private:
 };
 

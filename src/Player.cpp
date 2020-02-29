@@ -16,6 +16,8 @@ Player::~Player()
 */
 void Player::callInput() 
 {
+    this->lastY = this->y;
+    this->lastX = this->x;
     char userInput = ' ';
     cin >> userInput;
     switch (userInput)
@@ -33,6 +35,12 @@ void Player::callInput()
             this->x -= 1;
             break;
     }
+}
+
+void Player::resetToSafePosition() 
+{
+    this->y = this->lastY;
+    this->x = this->lastX;
 }
 
 int Player::getX()

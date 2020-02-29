@@ -1,4 +1,5 @@
 #include "GameMap.h"
+#include "MapCell.h"
 #include <iostream>
 #include <fstream>
 
@@ -22,14 +23,21 @@ void GameMap::draw()
     }
 }
 
-void GameMap::setPlayerCell(int playerX, int playerY)
+bool GameMap::setPlayerCell(int playerX, int playerY)
 {
+    MapCell* cell = &(this->cells[playerY][playerX]);
+    if (cell->isBlocked())
+    {
+        return false;
+    }
+
     if (this->playerCell != NULL) 
     {
         this->playerCell->id = ' ';
     }
-    this->playerCell = &(this->cells[playerY][playerX]);
+    this->playerCell = cell;
     this->playerCell->id = 'P';
+    return true;
 }
 
 void GameMap::loadMap()
