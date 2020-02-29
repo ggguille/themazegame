@@ -1,10 +1,13 @@
 #include "GameMap.h"
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
 GameMap::GameMap(/* args */)
 {
     this->playerCell = NULL;
+    this->loadMap();
 }
 
 void GameMap::draw()
@@ -27,4 +30,19 @@ void GameMap::setPlayerCell(int playerX, int playerY)
     }
     this->playerCell = &(this->cells[playerY][playerX]);
     this->playerCell->id = 3;
+}
+
+void GameMap::loadMap()
+{
+    string line;
+    ifstream file("res/map.txt");
+    if (file.is_open())
+    {
+
+    }
+    else
+    {
+        cout << "Fatal error: map file could not be loaded" << endl;
+    }
+    
 }

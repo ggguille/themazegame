@@ -11,6 +11,8 @@ public:
     MapCell cells[15][10];
     void draw();
     void setPlayerCell(int playerX, int playerY);
+protected:
+    void loadMap();
 };
 
 
