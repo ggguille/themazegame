@@ -6,7 +6,7 @@ class MapCell
 private:
     /* data */
 public:
-    int id;
+    char id;
     MapCell(/* args */);
 };
 
