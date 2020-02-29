@@ -1,17 +1,20 @@
 #include <iostream>
 #include "src/Player.h"
+#include "src/MapCell.h"
+#include "src/GameMap.h"
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
     bool isGameOver = false;
-    Player Hero;
+    Player hero;
+    GameMap map;
 
     cout << "Game started" << endl;
     while (!isGameOver)
     {
-        Hero.callInput();
+        hero.callInput();
     }
     return 0;
 }
