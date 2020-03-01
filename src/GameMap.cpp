@@ -11,6 +11,24 @@ GameMap::GameMap(/* args */)
     this->loadMap();
 }
 
+void GameMap::intro()
+{
+    string line;
+    ifstream file("res/intro.txt");
+    if (file.is_open())
+    {
+        while (getline(file, line))
+        {
+            cout << line << endl;
+        }
+        cin >> line;
+    }
+    else
+    {
+        cout << "Fatal error: intro could not be loaded" << endl;
+    }
+}
+
 void GameMap::draw()
 {
     for (int i = 0; i < 15; i++)

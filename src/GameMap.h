@@ -9,6 +9,7 @@ public:
     GameMap();
     MapCell* playerCell;
     MapCell cells[15][10];
+    void intro();
     void draw();
     bool setPlayerCell(int playerX, int playerY);
 protected:

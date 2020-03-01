@@ -11,6 +11,8 @@ int main(int argc, char const *argv[])
     Player hero;
     GameMap map;
 
+    map.intro();
+
     cout << "Game started" << endl;
     while (!isGameOver)
     {
