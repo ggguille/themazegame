@@ -7,21 +7,22 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    bool isGameOver = false;
     Player hero;
     GameMap map;
 
     map.intro();
-
     cout << "Game started" << endl;
-    while (!isGameOver)
+    while (!map.isFinish())
     {
         if (!map.setPlayerCell(hero.getX(), hero.getY())) 
         {
             hero.resetToSafePosition();
         }
-        map.draw();
-        hero.callInput();
+
+        if (!map.isFinish()) {
+            map.draw();
+            hero.callInput();
+        }
     }
     return 0;
 }

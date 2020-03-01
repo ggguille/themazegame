@@ -5,7 +5,6 @@ class Player
 {
     public:
         Player();
-        //virtual ~Player();
         void callInput();
         void resetToSafePosition();
         int getX();

@@ -7,6 +7,7 @@ using namespace std;
 
 GameMap::GameMap(/* args */)
 {
+    this->isGameOver = false;
     this->playerCell = NULL;
     this->loadMap();
 }
@@ -26,6 +27,23 @@ void GameMap::intro()
     else
     {
         cout << "Fatal error: intro could not be loaded" << endl;
+    }
+}
+
+void GameMap::victory()
+{
+    string line;
+    ifstream file("res/victory.txt");
+    if (file.is_open())
+    {
+        while (getline(file, line))
+        {
+            cout << line << endl;
+        }
+    }
+    else
+    {
+        cout << "Fatal error: victory could not be loaded :(" << endl;
     }
 }
 
@@ -49,6 +67,13 @@ bool GameMap::setPlayerCell(int playerX, int playerY)
         return false;
     }
 
+    if (cell->id == '$')
+    {
+        this->isGameOver = true;
+        this->victory();
+        return true;
+    }
+
     if (this->playerCell != NULL) 
     {
         this->playerCell->id = ' ';
@@ -56,6 +81,11 @@ bool GameMap::setPlayerCell(int playerX, int playerY)
     this->playerCell = cell;
     this->playerCell->id = 'P';
     return true;
+}
+
+bool GameMap::isFinish()
+{
+    return this->isGameOver;
 }
 
 void GameMap::loadMap()

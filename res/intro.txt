@@ -11,4 +11,5 @@
  |  /   V        ))       V   \  | 
  |/     `       //        '     \| 
  `              V                '
+ >> Find the treasure ($)
  >> Press any key and enter to start

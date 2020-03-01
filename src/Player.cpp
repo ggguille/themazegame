@@ -8,16 +8,12 @@ Player::Player()
     this->x = 1;
     this->y = 1;
 }
-/*
-Player::~Player()
-{
 
-}
-*/
 void Player::callInput() 
 {
     this->lastY = this->y;
     this->lastX = this->x;
+    cout << "Move: up (w), down (s), right (d) or left (a)" << endl;
     char userInput = ' ';
     cin >> userInput;
     switch (userInput)
