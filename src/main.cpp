@@ -1,7 +1,7 @@
 #include <iostream>
-#include "src/Player.h"
-#include "src/MapCell.h"
-#include "src/GameMap.h"
+#include "Player.h"
+#include "MapCell.h"
+#include "GameMap.h"
 
 using namespace std;
 
