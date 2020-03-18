@@ -1,7 +1,10 @@
-#include "GameMap.h"
-#include "MapCell.h"
 #include <iostream>
 #include <fstream>
+#include <vector>
+
+#include "GameMap.h"
+#include "MapCell.h"
+#include "ResourceManager.h"
 
 using namespace std;
 
@@ -14,36 +17,19 @@ GameMap::GameMap(/* args */)
 
 void GameMap::intro()
 {
-    string line;
-    ifstream file("res/intro.txt");
-    if (file.is_open())
-    {
-        while (getline(file, line))
-        {
-            cout << line << endl;
-        }
-        cin >> line;
-    }
-    else
-    {
-        cout << "Fatal error: intro could not be loaded" << endl;
+    ResourceManager res;
+    vector<string> vIntro = res.fetch("intro.txt");
+    for(vector<string>::iterator it = vIntro.begin(); it != vIntro.end(); it++) {
+        cout << *it << endl;
     }
 }
 
 void GameMap::victory()
 {
-    string line;
-    ifstream file("res/victory.txt");
-    if (file.is_open())
-    {
-        while (getline(file, line))
-        {
-            cout << line << endl;
-        }
-    }
-    else
-    {
-        cout << "Fatal error: victory could not be loaded :(" << endl;
+    ResourceManager res;
+    vector<string> vIntro = res.fetch("victory.txt");
+    for(vector<string>::iterator it = vIntro.begin(); it != vIntro.end(); it++) {
+        cout << *it << endl;
     }
 }
 
@@ -90,31 +76,18 @@ bool GameMap::isFinish()
 
 void GameMap::loadMap()
 {
+    ResourceManager res;
+    vector<string> vIntro = res.fetch("map.txt");
+    int charIndex;
     string line;
-    ifstream file("res/map.txt");
-    if (file.is_open())
-    {
-        int lineIndex = 0;
-        int charIndex;
-        while (getline(file, line))
-        {
-            for (charIndex = 0; charIndex < 10; charIndex++) 
-            {
-                if (line[charIndex] == '0')
-                {
-                    this->cells[lineIndex][charIndex].id = ' ';
-                }
-                else 
-                {
-                    this->cells[lineIndex][charIndex].id = line[charIndex];
-                }
+    for(int lineIndex = 0; lineIndex < vIntro.size(); lineIndex++) {
+        line = vIntro.at(lineIndex);
+        for (charIndex = 0; charIndex < 10; charIndex++) {
+            if (line[charIndex] == '0') {
+                this->cells[lineIndex][charIndex].id = ' ';
+            } else {
+                this->cells[lineIndex][charIndex].id = line[charIndex];
             }
-            lineIndex++;
         }
     }
-    else
-    {
-        cout << "Fatal error: map file could not be loaded" << endl;
-    }
-    
 }
