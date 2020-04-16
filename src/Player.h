@@ -9,6 +9,7 @@ class Player
         void resetToSafePosition();
         int getX();
         int getY();
+        void init();
     protected:
         int x, lastX, y, lastY;
     private:

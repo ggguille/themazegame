@@ -48,3 +48,11 @@ int Player::getY()
 {
     return this->y;
 }
+
+void Player::init()
+{
+    this->x = 1;
+    this->lastX = 1;
+    this->y = 1;
+    this->lastY = 1;
+}

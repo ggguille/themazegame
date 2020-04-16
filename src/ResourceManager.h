@@ -10,7 +10,7 @@ class ResourceManager
 {
 public:
   ResourceManager();
-  vector<string> fetch(string path);
+  vector<string> fetch(const string& path);
 private:
   string resource_path;
 };

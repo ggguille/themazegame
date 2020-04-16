@@ -8,7 +8,7 @@ ResourceManager::ResourceManager()
     this->resource_path = "res/";
 }
 
-vector<string> ResourceManager::fetch(string path) 
+vector<string> ResourceManager::fetch(const string& path) 
 {
   vector<string> vData;
   string line;
