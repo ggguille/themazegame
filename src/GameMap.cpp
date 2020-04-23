@@ -12,7 +12,6 @@ GameMap::GameMap(/* args */)
 {
     this->isGameOver = false;
     this->playerCell = NULL;
-    this->loadMap();
 }
 
 void GameMap::intro()
@@ -56,7 +55,6 @@ bool GameMap::setPlayerCell(int playerX, int playerY)
     if (cell->id == '$')
     {
         this->isGameOver = true;
-        this->victory();
         return true;
     }
 
@@ -74,10 +72,11 @@ bool GameMap::isFinish()
     return this->isGameOver;
 }
 
-void GameMap::loadMap()
+void GameMap::loadMap(const string& mapLevel)
 {
+    this->isGameOver = false;
     ResourceManager res;
-    vector<string> vIntro = res.fetch("map.txt");
+    vector<string> vIntro = res.fetch("maps/" + mapLevel + ".txt");
     int charIndex;
     string line;
     for(int lineIndex = 0; lineIndex < vIntro.size(); lineIndex++) {
