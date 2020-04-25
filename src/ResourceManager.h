@@ -1,5 +1,4 @@
-#ifndef RESOURCE_MANAGER_H
-#define RESOURCE_MANAGER_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -14,6 +13,3 @@ public:
 private:
   string resource_path;
 };
-
-
-#endif // RESOURCE_MANAGER_H
