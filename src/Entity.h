@@ -1,15 +1,14 @@
 #pragma once
 
+#include "Position.h"
+
 class Entity {
 public:
-    Entity();
-    void move();
-    void resetToSafePosition();
-    const int& getX() const;
-    const int& getY() const;
+    Entity(const char representation);
+    const Position& getPosition();
+    void setPosition(const Position position); 
     const char& getId() const;
-    void initialPosition();
 protected:
-    char id;
-    int x, lastX, y, lastY;
+    const char id;
+    Position position;
 };

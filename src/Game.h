@@ -1,19 +1,22 @@
 #pragma once
 
 #include "ResourceManager.h"
-#include "Map.h"
-#include "Entity.h"
+#include "Level.h"
+#include "Player.h"
+#include "Treasure.h"
 
 class Game {
 private:
-  int currentLevel;
-  Entity player;
+  Level level;
+  Player player;
+  Treasure treasure;
   const ResourceManager& resources;
-  Map map;
+  void init();
   void intro();
   void victory();
   void checkLevelFinished();
-  void loadMap();
+  void draw();
+  void action();
 public:
   Game(const ResourceManager& resourceManager);
   void start();

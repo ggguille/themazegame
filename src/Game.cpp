@@ -3,8 +3,16 @@
 
 #include "Game.h"
 
-Game::Game(const ResourceManager& resourceManager): resources(resourceManager) {
-  this->currentLevel = 1;
+static const int MAX_LEVELS = 3;
+
+Game::Game(const ResourceManager& resourceManager): 
+  resources(resourceManager), level(Level(resourceManager, MAX_LEVELS)) {
+  this->init();
+}
+
+void Game::init() {
+  this->player.setPosition(level.initialPlayerPosition());
+  this->treasure.setPosition(level.getTreasurePosition());
 }
 
 void Game::intro() {
@@ -22,39 +30,38 @@ void Game::victory() {
 }
 
 void Game::checkLevelFinished() {
-  const char cellId = map.getCellId(player.getX(), player.getY());
-  if (cellId == '$') {
-    currentLevel++;
+  if (player.getPosition() == treasure.getPosition()) {
+    level.levelUp();
     if (!isFinished()) {
-      loadMap();
-      player.initialPosition();
+      init();
     }
   }
 }
 
 bool Game::isFinished() {
-  return currentLevel > 3;
-}
-
-void Game::loadMap() {
-  std::vector<std::string> vMap = resources.fetch("maps/" + std::to_string(this->currentLevel) + ".txt");
-  map.build(vMap);
+  return level.current() > MAX_LEVELS;
 }
 
 void Game::start() {
   intro();
-  std::cin.get(); 
-  loadMap();
+  std::cin.get();
+}
+
+void Game::draw() {
+  std::vector<Entity> entities;
+  entities.push_back(treasure);
+  entities.push_back(player);
+  level.getMap().draw(entities);
+}
+
+void Game::action() {
+  player.move(level.getMap());
 }
 
 void Game::play() {
-  map.draw(player);
-  player.move();
-  if (map.isCellAvailable(player.getX(), player.getY())) {
-    checkLevelFinished();
-  } else {
-    player.resetToSafePosition();
-  }
+  draw();
+  action();
+  checkLevelFinished();
 }
 
 void Game::end() {

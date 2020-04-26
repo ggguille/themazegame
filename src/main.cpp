@@ -9,7 +9,7 @@ int main(int argc, char const *argv[]) {
   game.start();
   while (!game.isFinished()) {
     game.play();
-    std::cout << "\033[2J\033[H";
+    //std::cout << "\033[2J\033[H";
   }
   game.end();
 }
