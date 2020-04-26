@@ -4,12 +4,14 @@
 #include "Level.h"
 #include "Player.h"
 #include "Treasure.h"
+#include "Enemy.h"
 
 class Game {
 private:
   Level level;
   Player player;
   Treasure treasure;
+  std::vector<Enemy> enemies;
   const ResourceManager& resources;
   void init();
   void intro();

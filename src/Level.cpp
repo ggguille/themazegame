@@ -7,6 +7,7 @@ Level::Level(const ResourceManager& resourceManager, const int maxLevels):
 }
 
 void Level::load() {
+  this->vEnemyPosition.clear();
   std::vector<std::string> vMapStr = resources.fetch("maps/" + std::to_string(this->id) + ".txt");
   this->map.build(vMapStr);
   for (int row = 0; row < MAP_ROWS; row++) {

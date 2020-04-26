@@ -13,18 +13,25 @@ Game::Game(const ResourceManager& resourceManager):
 void Game::init() {
   this->player.setPosition(level.initialPlayerPosition());
   this->treasure.setPosition(level.getTreasurePosition());
+  if (this->enemies.size() > 0) {
+    this->enemies.clear();
+  }
+  std::vector<Position> enemyPositions = level.getEnemiePositions();
+  for (Position& position : enemyPositions) {
+    this->enemies.push_back(Enemy(position));
+  }
 }
 
 void Game::intro() {
   std::vector<string> vIntro = resources.fetch("intro.txt");
-  for (std::string str : vIntro) {
+  for (std::string& str : vIntro) {
     std::cout << str << std::endl;
   }
 }
 
 void Game::victory() {
   vector<string> vVictory = resources.fetch("victory.txt");
-  for (std::string str : vVictory) {
+  for (std::string& str : vVictory) {
     std::cout << str << std::endl;
   }
 }
@@ -51,11 +58,17 @@ void Game::draw() {
   std::vector<Entity> entities;
   entities.push_back(treasure);
   entities.push_back(player);
+  for (Entity& enemy : enemies) {
+    entities.push_back(enemy);
+  }
   level.getMap().draw(entities);
 }
 
 void Game::action() {
   player.move(level.getMap());
+  for (Enemy& enemy : enemies) {
+    enemy.move(level.getMap());
+  }
 }
 
 void Game::play() {
