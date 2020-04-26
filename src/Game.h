@@ -16,6 +16,7 @@ private:
   void init();
   void intro();
   void victory();
+  void gameover();
   void checkLevelFinished();
   void draw();
   void action();

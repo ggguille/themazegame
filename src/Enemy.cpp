@@ -2,7 +2,7 @@
 #include <ctime>
 #include "Enemy.h"
 
-Enemy::Enemy(Position position): Entity('x'), EntityMovement() {
+Enemy::Enemy(Position position): Entity('x'), EntityMovement(), EntityLive(1) {
   this->setPosition(position);
   this->count = 0;
   this->assignCurrentMovement();
@@ -36,5 +36,6 @@ void Enemy::move(Map& map) {
 void Enemy::assignCurrentMovement() {
   std::srand(std::time(nullptr));
   int randomValue = std::rand();
-  this->current = this->movements[randomValue % NUMBER_OF_MOVEMENTS];
+  const char* movements = "wasd";
+  this->current = movements[randomValue % 4];
 }

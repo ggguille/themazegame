@@ -2,9 +2,9 @@
 
 #include "Entity.h"
 #include "EntityMovement.h"
-#include "Map.h"
+#include "EntityLive.h"
 
-class Player : public Entity, public EntityMovement {
+class Player : public Entity, public EntityMovement, public EntityLive {
 public:
   Player();
   void move(Map& map) override;

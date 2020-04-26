@@ -23,15 +23,22 @@ void Game::init() {
 }
 
 void Game::intro() {
-  std::vector<string> vIntro = resources.fetch("intro.txt");
-  for (std::string& str : vIntro) {
+  std::vector<string> text = resources.fetch("intro.txt");
+  for (std::string& str : text) {
     std::cout << str << std::endl;
   }
 }
 
 void Game::victory() {
-  vector<string> vVictory = resources.fetch("victory.txt");
-  for (std::string& str : vVictory) {
+  vector<string> text = resources.fetch("victory.txt");
+  for (std::string& str : text) {
+    std::cout << str << std::endl;
+  }
+}
+
+void Game::gameover() {
+  vector<string> text = resources.fetch("gameover.txt");
+  for (std::string& str : text) {
     std::cout << str << std::endl;
   }
 }
@@ -46,7 +53,7 @@ void Game::checkLevelFinished() {
 }
 
 bool Game::isFinished() {
-  return level.current() > MAX_LEVELS;
+  return level.current() > MAX_LEVELS || !player.isAlive();
 }
 
 void Game::start() {
@@ -58,8 +65,10 @@ void Game::draw() {
   std::vector<Entity> entities;
   entities.push_back(treasure);
   entities.push_back(player);
-  for (Entity& enemy : enemies) {
-    entities.push_back(enemy);
+  for (Enemy& enemy : enemies) {
+    if (enemy.isAlive()) {
+      entities.push_back(enemy);
+    }
   }
   level.getMap().draw(entities);
 }
@@ -68,6 +77,10 @@ void Game::action() {
   player.move(level.getMap());
   for (Enemy& enemy : enemies) {
     enemy.move(level.getMap());
+    if (enemy.isAlive() && player.getPosition() == enemy.getPosition()) {
+      player.substractLive();
+      enemy.substractLive();
+    }
   }
 }
 
@@ -78,5 +91,9 @@ void Game::play() {
 }
 
 void Game::end() {
-  victory();
+  if (player.isAlive()) {
+    victory();
+  } else {
+    gameover();
+  }
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Player.h"
 
-Player::Player(): Entity('P'), EntityMovement() {}
+Player::Player(): Entity('P'), EntityMovement(), EntityLive(1) {}
 
 void Player::move(Map& map) { 
   Position newPosition = this->position;
