@@ -1,5 +1,4 @@
-#ifndef RESOURCE_MANAGER_H
-#define RESOURCE_MANAGER_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -10,10 +9,7 @@ class ResourceManager
 {
 public:
   ResourceManager();
-  vector<string> fetch(const string& path);
+  vector<string> fetch(const string& path) const;
 private:
   string resource_path;
 };
-
-
-#endif // RESOURCE_MANAGER_H

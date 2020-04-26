@@ -1,18 +1,11 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
-class Player
-{
-    public:
-        Player();
-        void callInput();
-        void resetToSafePosition();
-        int getX();
-        int getY();
-        void init();
-    protected:
-        int x, lastX, y, lastY;
-    private:
+#include "Entity.h"
+#include "EntityMovement.h"
+#include "EntityLive.h"
+
+class Player : public Entity, public EntityMovement, public EntityLive {
+public:
+  Player();
+  void move(Map& map) override;
 };
-
-#endif // PLAYER_H

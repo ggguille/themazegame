@@ -4,7 +4,7 @@ BUILD_PATH=build
 OBJECTS=$(patsubst $(SRC_PATH)/*.cpp, $(BUILD_PATH)/*.o, $(SOURCES))
 RES_PATH=res
 
-CXX=clang++
+CXX=clang++ -std=c++17
 TARGET=$(BUILD_PATH)/themazegame
 
 all: build_dir resources $(TARGET)
